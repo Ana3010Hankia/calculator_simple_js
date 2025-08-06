@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #a6a7fd;
+}
+
+.calculator-container {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px;
+}
+
+.calculator-display {
+  background-color: #2d3748; 
+  color: #ffffff;
+  text-align: right;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 2.8em;
+  font-family: "Roboto Mono", monospace; 
+  overflow: hidden;
+  word-wrap: break-word;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.6em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  outline: none;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Digit buttons */
+.digit-button {
+  background-color: #e2e8f0; 
+  color: #2d3748;
+}
+
+.digit-button:hover {
+  background-color: #cbd5e0;
+}
+
+/* Operator buttons */
+.operator-button {
+  background-color: #f91616; 
+  color: #ffffff;
+}
+
+.operator-button:hover {
+  background-color: #d52a2a; 
+}
+
+/* Active operator button */
+.operator-button.active {
+  background-color: #b00d0d; 
+  box-shadow: 0 0 0 3px #fd9274; 
+}
+
+/* Clear and Backspace buttons */
+.utility-button,
+.clear-button {
+  background-color: #a0aec0; 
+  color: #ffffff;
+}
+
+.utility-button:hover,
+.clear-button:hover {
+  background-color: #718096; 
+}
+
+/* Equals button */
+.equals-button {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.equals-button:hover {
+  background-color: #2563eb;
+}
+
+/* Span classes for layout */
+.span-2 {
+  grid-column: span 2;
+}
+
+/* Disabled state for decimal button */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
