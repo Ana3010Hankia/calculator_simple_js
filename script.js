@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const operatorButtons = document.querySelectorAll(".operator-button")
   const clearButton = document.getElementById("clear")
   const backspaceButton = document.getElementById("backspace")
-  const decimalButton = document.getElementById("decimal")
+  const decimalButton = document.getElementById("decimal") 
   const equalsButton = document.getElementById("equals")
 
   let displayValue = "0"
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateDisplay() {
     display.textContent = displayValue
-    // Disable decimal button if displayValue already contains a decimal
     decimalButton.disabled = displayValue.includes(".")
   }
 
@@ -38,10 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
       displayValue = displayValue === "0" ? digit : displayValue + digit
     }
     updateDisplay()
-    removeActiveOperatorHighlight() // Remove highlight when new digit is typed
+    removeActiveOperatorHighlight() 
   }
 
-  function inputDecimal() {
+ function inputDecimal() {
     if (errorState) return
     if (waitingForSecondOperand) {
       displayValue = "0."
@@ -49,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateDisplay()
       return
     }
+   
     if (!displayValue.includes(".")) {
       displayValue += "."
       updateDisplay()
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDisplay()
         return
       }
-      // Round result to avoid long decimals
+      
       const roundedResult = Number.parseFloat(result.toFixed(8)).toString()
       displayValue = roundedResult
       firstOperand = roundedResult
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleEquals() {
     if (errorState) return
     if (firstOperand === null || operator === null) {
-      return // Do nothing if not enough operands/operator
+      return 
     }
 
     const inputValue = Number.parseFloat(displayValue)
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function backspace() {
     if (errorState) return
-    if (waitingForSecondOperand) return // Don't backspace if waiting for new number
+    if (waitingForSecondOperand) return 
 
     if (displayValue.length === 1 || (displayValue.length === 2 && displayValue.startsWith("-"))) {
       displayValue = "0"
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clearButton.addEventListener("click", clearCalculator)
   backspaceButton.addEventListener("click", backspace)
-  decimalButton.addEventListener("click", inputDecimal)
+  decimalButton.addEventListener("click", inputDecimal) 
   equalsButton.addEventListener("click", handleEquals)
 
   // Keyboard support
