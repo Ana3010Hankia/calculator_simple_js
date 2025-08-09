@@ -68,8 +68,7 @@
         if (num2 === 0) {
           errorState = true;
           return "error";
-        }
-        return num1 / num2;
+        } else return num1 / num2;
       default:
         return num2;
     }
@@ -87,7 +86,7 @@
       const result = performOperation(operator, Number.parseFloat(firstOperand), inputValue);
 
       if (result === "error") {
-        displayValue = "Error";
+        displayValue = "undefined";
         updateDisplay();
         return;
       }
@@ -110,7 +109,7 @@
     const result = performOperation(operator, Number.parseFloat(firstOperand), inputValue);
 
     if (result === "error") {
-      displayValue = "Error";
+      displayValue = "undefined";
       updateDisplay();
       return;
     }
