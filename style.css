@@ -1,4 +1,7 @@
-body {
+
+
+
+.main {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -6,7 +9,15 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #a6a7fd;
+
 }
+
+.header {
+  color: #ff0000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 
 .calculator-container {
   background-color: #ffffff;
@@ -109,3 +120,37 @@ body {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+@media (max-width: 480px) {
+  .calculator-container {
+    max-width: 95vw;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .calculator-display {
+    font-size: 2em;
+    height: 60px;
+    padding: 15px;
+  }
+  .calculator-buttons {
+    gap: 8px;
+  }
+  .button {
+    padding: 15px;
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 320px) {
+  .calculator-display {
+    font-size: 1.6em;
+    height: 50px;
+    padding: 10px;
+  }
+  .button {
+    padding: 12px;
+    font-size: 1.1em;
+  }
+}
+
+
