@@ -7,9 +7,9 @@
   const equalsButton = document.getElementById("equals");
 
   let displayValue = "0";
-  let firstOperand = null;
+  let firstOperator = null;
   let operator = null;
-  let waitingForSecondOperand = false;
+  let pendingSecondOperator = false;
   let errorState = false;
 
   function updateDisplay() {
@@ -19,9 +19,9 @@
 
   function clearCalculator() {
     displayValue = "0";
-    firstOperand = null;
+    firstOperator = null;
     operator = null;
-    waitingForSecondOperand = false;
+    pendingSecondOperator = false;
     errorState = false;
     updateDisplay();
     removeActiveOperatorHighlight();
@@ -30,9 +30,9 @@
   function inputDigit(digit) {
     if (errorState) return;
 
-    if (waitingForSecondOperand) {
+    if (pendingSecondOperator) {
       displayValue = digit;
-      waitingForSecondOperand = false;
+      pendingSecondOperator = false;
     } else {
       displayValue = displayValue === "0" ? digit : displayValue + digit;
     }
@@ -43,9 +43,9 @@
  function inputDecimal() {
     if (errorState) return;
 
-    if (waitingForSecondOperand) {
+    if (pendingSecondOperator) {
       displayValue = "0.";
-      waitingForSecondOperand = false;
+      pendingSecondOperator = false;
       updateDisplay();
       return;
 
@@ -79,11 +79,11 @@
 
     const inputValue = Number.parseFloat(displayValue);
 
-    if (firstOperand === null) {
-      firstOperand = displayValue;
+    if (firstOperator === null) {
+      firstOperator = displayValue;
 
     } else if (operator) {
-      const result = performOperation(operator, Number.parseFloat(firstOperand), inputValue);
+      const result = performOperation(operator, Number.parseFloat(firstOperator), inputValue);
 
       if (result === "error") {
         displayValue = "undefined";
@@ -93,20 +93,20 @@
       
       const roundedResult = Number.parseFloat(result.toFixed(8)).toString();
       displayValue = roundedResult;
-      firstOperand = roundedResult;
+      firstOperator = roundedResult;
     }
 
-    waitingForSecondOperand = true;
+    pendingSecondOperator = true;
     operator = nextOperator;
     updateDisplay();
     highlightActiveOperator(nextOperator);
   }
 
   function handleEquals() {
-    if (errorState || firstOperand === null || operator === null) return;
+    if (errorState || firstOperator === null || operator === null) return;
 
     const inputValue = Number.parseFloat(displayValue);
-    const result = performOperation(operator, Number.parseFloat(firstOperand), inputValue);
+    const result = performOperation(operator, Number.parseFloat(firstOperator), inputValue);
 
     if (result === "error") {
       displayValue = "undefined";
@@ -116,15 +116,15 @@
 
     const roundedResult = Number.parseFloat(result.toFixed(8)).toString();
     displayValue = roundedResult;
-    firstOperand = null;
+    firstOperator = null;
     operator = null;
-    waitingForSecondOperand = false;
+    pendingSecondOperator = false;
     updateDisplay();
     removeActiveOperatorHighlight();
   }
 
   function backspace() {
-    if (errorState || waitingForSecondOperand) return;
+    if (errorState || pendingSecondOperator) return;
 
     if (displayValue.length === 1 || (displayValue.length === 2 && displayValue.startsWith("-"))) {
       displayValue = "0";
