@@ -24,7 +24,7 @@
     pendingSecondOperator = false;
     errorState = false;
     updateDisplay();
-    removeActiveOperatorHighlight();
+    removeActive();
   }
 
   function inputDigit(digit) {
@@ -37,7 +37,7 @@
       displayValue = displayValue === "0" ? digit : displayValue + digit;
     }
     updateDisplay();
-    removeActiveOperatorHighlight(); 
+    removeActive(); 
   }
 
  function inputDecimal() {
@@ -99,7 +99,7 @@
     pendingSecondOperator = true;
     operator = nextOperator;
     updateDisplay();
-    highlightActiveOperator(nextOperator);
+    highlightActive(nextOperator);
   }
 
   function handleEquals() {
@@ -120,7 +120,7 @@
     operator = null;
     pendingSecondOperator = false;
     updateDisplay();
-    removeActiveOperatorHighlight();
+    removeActive();
   }
 
   function backspace() {
@@ -134,8 +134,8 @@
     updateDisplay();
   }
 
-  function highlightActiveOperator(activeOp) {
-    removeActiveOperatorHighlight()
+  function highlightActive(activeOp) {
+    removeActive()
     operatorButtons.forEach((button) => {
       if (button.dataset.operator === activeOp) {
         button.classList.add("active")
@@ -143,7 +143,7 @@
     })
   }
 
-  function removeActiveOperatorHighlight() {
+  function removeActive() {
     operatorButtons.forEach((button) => {
       button.classList.remove("active");
     })
