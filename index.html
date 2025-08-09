@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="calculator-container">
+    <section class="calculator-container">
         <div class="calculator-display" id="calculator-display" aria-live="polite" aria-atomic="true">0</div>
-        <div class="calculator-buttons">
-            <button class="button clear-button span-2" id="clear">C</button>
-            <button class="button utility-button" id="backspace">DEL</button>
+        <section class="calculator-buttons">
+            <button class="button clear-button span-2" id="clear" aria-label="Clear">C</button>
+            <button class="button delete-button" id="backspace" aria-label="Delete">DEL</button>
             <button class="button operator-button" data-operator="/" aria-label="Divide">/</button>
 
             <button class="button digit-button" data-digit="7" aria-label="Seven">7</button>
@@ -32,8 +33,7 @@
             <button class="button digit-button span-2" data-digit="0" aria-label="Zero">0</button>
             <button class="button" id="decimal" aria-label="Decimal point">.</button>
             <button class="button operator-button equals-button" id="equals" aria-label="Equals">=</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+        </section>
+    </section>
 </body>
 </html>

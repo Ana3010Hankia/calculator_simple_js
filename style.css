@@ -58,7 +58,6 @@ body {
   transform: translateY(1px);
 }
 
-/* Digit buttons */
 .digit-button {
   background-color: #e2e8f0; 
   color: #2d3748;
@@ -68,7 +67,6 @@ body {
   background-color: #cbd5e0;
 }
 
-/* Operator buttons */
 .operator-button {
   background-color: #f91616; 
   color: #ffffff;
@@ -78,25 +76,22 @@ body {
   background-color: #d52a2a; 
 }
 
-/* Active operator button */
 .operator-button.active {
   background-color: #b00d0d; 
   box-shadow: 0 0 0 3px #fd9274; 
 }
 
-/* Clear and Backspace buttons */
-.utility-button,
+.delete-button,
 .clear-button {
   background-color: #a0aec0; 
   color: #ffffff;
 }
 
-.utility-button:hover,
+.delete-button:hover,
 .clear-button:hover {
   background-color: #718096; 
 }
 
-/* Equals button */
 .equals-button {
   background-color: #3b82f6;
   color: #ffffff;
@@ -106,12 +101,10 @@ body {
   background-color: #2563eb;
 }
 
-/* Span classes for layout */
 .span-2 {
   grid-column: span 2;
 }
 
-/* Disabled state for decimal button */
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
